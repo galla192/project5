@@ -1,0 +1,16 @@
+<div id="birthmonth">
+	<h1>Holidays the month I was born:</h1>
+	<ul>
+		<% @holidays_born.each do |holiday| %>
+			<li><p style="color: black"><%= holiday[0]["name"] %></p></li>
+		<% end %>
+	</ul>
+</div>
+<div id="now">
+	<h1>Holidays this month:</h1>
+	<ul>
+		<% @holidays_now.each do |holiday| %>
+			<li><p style="color: black"><%= holiday[0]["name"] %></p></li>
+		<% end %>
+	</ul>
+</div>
