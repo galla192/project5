@@ -1,5 +1,8 @@
-body{
-	background-color: red;
+.text-box{
+	float: left;
+}
+form{
+	width: 50%;
 }
 p{
 	text-align: center;
