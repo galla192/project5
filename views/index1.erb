@@ -1,7 +1,11 @@
-<form method="get" action="/display.erb">
-    <label for="name">Country</label>
-    <input type="text" name="country">
-    <input name="year" type="text">
-    <input name="month" type="text">
-    <button type="submit">Submit</button>
+<h3>Select Date Info</h3>
+<form>
+	<label for="year">Select Year</label>
+	<input name="year" type="number" class="form-control" value="<%= params['year'] %>">
+	<label for="month">Select Month</label>
+	<input name="month" type="number" class="form-control" value="<%= params['month'] %>">
+	<label for="day">Select Day</label>
+	<input name="day" type="number" class="form-control" value="<%= params['day'] %>">
+	<br>
+	<button type="submit" class="btn btn-lg btn-primary">Submit</button>
 </form>
