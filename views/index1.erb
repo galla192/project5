@@ -1,72 +1,44 @@
-<div class="page-header">
-	<h1>Current Holidays</h1>
-    <p class="lead"></p>
-</div>
-<div class="row">
-	<div class="col-md-4">
-		<h3>Date:</h3>
-		<form>
-			<label for="year">Year</label>
-			<input name="year" type="number" class="form-control" value="<%= params['year'] %>">
-			<label for="month">Month</label>
-			<input name="month" type="number" class="form-control" value="<%= params['month'] %>">
-			<label for="day">Day</label>
-			<input name="day" type="number" class="form-control" value="<%= params['day'] %>">
-			<br>
-			<button type="submit" class="btn btn-lg btn-primary">Submit</button>
-		</form>
-	</div>
-	<div class="col-md-8">
-	  	<h3>Holidays for the Year <%= 
-	  	if params['year'] != nil && params['year'] != ""
-	  		if params['month'] != nil && params['month'] != ""
-		  		if params['day'] != nil && params['day'] != ""
-		  		params['year'] + " Month: " + params['month'] +" Day: " + params['day']
-			    else
-			    	params['year'] + " Month: " + params['month']
-			    end
-		    else
-		    	params['year']
-		    end
-	    else
-	    	"Current"
-	    end
-	  	%>
-	  	</h3>
-		<% if params['year'] != nil && params['year'] != "" %>
-
-			<% if params['month'] != nil && params['month'] != "" %>
-
-				<% if params['day'] != nil && params['day'] != "" %>
-					<% @holidays.each do |holiday| %>
-						<p><%= holiday['name'] %> is on: <%= holiday['date'] %></p><br>
-					<% end %>
-		  		<% else %>
-					<% @holidays.each do |date| %>
-						<% date.each do |holiday| %>
-							<p><%= holiday['name'] %> is on: <%= holiday['date'] %></p><br>
-						<% end %>
-					<% end %>
-		  		<% end %>
-		
-			<% else %>
-				<% @holidays.each do |date| %>
-						<% count = 0 %>
-						<% date[1].each do |holiday| %>
-						<p><%= holiday['name'] %> is on: <%= holiday['date'] %></p><br>
-						<% count += 1 %>
-					<% end %>
-				<% end %>
+<h1>Holiday Form App</h1>
+<h3>Date:</h3>
+<form>
+	<label for="year">Year</label>
+	<input name="year" type="number" class="text-box" value="<%= params['year'] %>">
+	<label for="month">Month</label>
+	<input name="month" type="number" class="text-box" value="<%= params['month'] %>">
+	<label for="day">Day</label>
+	<input name="day" type="number" class="text-box" value="<%= params['day'] %>">
+	<br>
+	<button type="submit" id="submit-button">Submit</button>
+</form>
+<% if params['year'] != nil && params['year'] != "" %>
+	<% if params['month'] != nil && params['month'] != "" %>
+		<% if params['day'] != nil && params['day'] != "" %>
+			<% @holidays.each do |holiday| %>
+				<p><%= holiday['name'] %> <%= holiday['date'] %></p><br>
 			<% end %>
-
-		<% else %>
+  		<% else %>
 			<% @holidays.each do |date| %>
-					<% count = 0 %>
-					<% date[1].each do |holiday| %>
-					<p><%= holiday['name'] %> is on: <%= holiday['date'] %></p><br>
-					<% count += 1 %>
+				<% date.each do |holiday| %>
+					<p><%= holiday['name'] %> <%= holiday['date'] %></p><br>
 				<% end %>
 			<% end %>
-		<% end %>	
-	</div>
-</div>
+  		<% end %>
+	<% else %>
+		<% @holidays.each do |date| %>
+			<% count = 0 %>
+			<% date[1].each do |holiday| %>
+				<p><%= holiday['name'] %> <%= holiday['date'] %></p><br>
+				<% count += 1 %>
+			<% end %>
+		<% end %>
+	<% end %>
+
+<% else %>
+	<% @holidays.each do |date| %>
+		<% count = 0 %>
+		<% date[1].each do |holiday| %>
+			<p><%= holiday['name'] %> <%= holiday['date'] %></p><br>
+			<% count += 1 %>
+		<% end %>
+	<% end %>
+<% end %>
