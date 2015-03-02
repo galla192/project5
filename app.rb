@@ -7,4 +7,7 @@ class MyWebApp < Sinatra::Base
 		@holidays_now=HolidApi.get(year: Time.now.year, month: Time.now.month)
 		erb :index1
 	end
+	get '/display.html' do
+		"Hello World"
+	end
 end
