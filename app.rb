@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'HolidApi'
+require 'holidapi'
 
 class MyWebApp < Sinatra::Base
   get '/' do
